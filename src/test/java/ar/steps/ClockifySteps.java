@@ -1,6 +1,7 @@
 package ar.steps;
 
 import ar.validator.ClientValidator;
+import ar.validator.ProjectValidator;
 import ar.validator.WorkspaceValidator;
 import com.crowdar.core.PageSteps;
 import io.cucumber.java.en.And;
@@ -33,6 +34,12 @@ public class ClockifySteps extends PageSteps {
     @And("^tengo un nombre de cliente (.*)$")
     public void tengoUnNombreDeClienteName(String name) {
         BaseService.NAME_CLIENT.set(name);
+    }
+
+    @And("^el nombre del proyecto es (.*)$")
+    public void elNombreDelProyectoEs(String nameProject) {
+
+        ProjectValidator.validateNameProject(nameProject);
     }
 
 }

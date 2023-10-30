@@ -23,3 +23,31 @@ Feature: Clockify
     Examples:
       | operation | entity | jsonName               | statusCode | name        |
       | GETCLIENT | CLIENT | getClientsForWorkspace | 200        | newClient01 |
+
+
+  Scenario Outline: Get Projects for Workspace
+    Given An account created in Clockify and x-api-key 'MWQ4ODMwYmYtMGQyOC00OWYyLWIzYjAtYWEzNjI4MWM4ZmUx' generated
+    And I perform a 'GET' to 'WORKSPACE' endpoint with the 'getAllWorkspaces' and ''
+    And status code 200 is obtained
+    And obtengo un workspaceId
+    When I perform a '<operation>' to '<entity>' endpoint with the '<jsonName>' and ''
+    Then status code <statusCode> is obtained
+    And el nombre del proyecto es <name>
+
+    Examples:
+      | operation  | entity  | jsonName                | statusCode | name     |
+      | GETPROJECT | PROJECT | getProjectsForWorkspace | 200        | Project2 |
+
+
+  Scenario Outline: Get Projects for Workspace Fails
+    Given An account created in Clockify and x-api-key 'MWQ4ODMwYmYtMGQyOC00OWYyLWIzYjAtYWEzNjI4MWM4ZmUx' generated
+    And I perform a 'GET' to 'WORKSPACE' endpoint with the 'getAllWorkspaces' and ''
+    And status code 200 is obtained
+    And obtengo un workspaceId
+    When I perform a '<operation>' to '<entity>' endpoint with the '<jsonName>' and ''
+    Then status code <statusCode> is obtained
+
+
+    Examples:
+      | operation  | entity  | jsonName         | statusCode |  |
+      | GETPROJECT | PROJECT | getProjectsError | 403        |  |
