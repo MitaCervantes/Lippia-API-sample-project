@@ -16,4 +16,7 @@ public class WorkspacesResponse {
     private String imageUrl;
     private String featureSubscriptionType;
 
+    public String getId() {
+        return this.id;
+    }
 }

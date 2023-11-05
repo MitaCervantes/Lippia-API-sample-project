@@ -1,6 +1,8 @@
 package services;
 
 import api.model.projects.ProjectResponse;
+import api.model.workspaces.WorkspacesResponse;
+import com.crowdar.api.rest.APIManager;
 import com.crowdar.api.rest.Response;
 import com.crowdar.core.PropertyManager;
 
@@ -17,8 +19,10 @@ public class ProjectService extends BaseService{
         params.put("base.url", PropertyManager.getProperty("base.api.url"));
         params.put("api-key",X_API_KEY.get());
         params.put("id-workspace",WORKSPACE_ID_0.get());
+
         return params;
     }
 
     public static Response post(String jsonName) {return post(jsonName,ProjectResponse.class ,setParams());}
+
 }

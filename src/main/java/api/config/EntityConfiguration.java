@@ -27,9 +27,7 @@ public enum EntityConfiguration {
     },
     PROJECT{
         @Override
-        public Class<?> getEntityService() {
-            return ProjectService.class;
-        }
+        public Class<?> getEntityService() { return ProjectService.class; }
     }
     ;
 

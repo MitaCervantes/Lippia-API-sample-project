@@ -8,6 +8,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import services.BaseService;
+import services.ProjectService;
 import services.WorkspaceService;
 
 public class ClockifySteps extends PageSteps {
@@ -26,20 +27,25 @@ public class ClockifySteps extends PageSteps {
         WorkspaceService.defineWorkspaceId();
     }
 
+    @And("^tengo un nombre de cliente (.*)$")
+    public void tengoUnNombreDeCliente(String name) {
+        BaseService.NAME_CLIENT.set(name);
+    }
+
     @And("^el nombre del cliente es (.*)$")
-    public void elNombreDelClienteEsName(String nameClient) {
+    public void elNombreDelClienteEs(String nameClient) {
         ClientValidator.validateNameClient(nameClient);
     }
 
-    @And("^tengo un nombre de cliente (.*)$")
-    public void tengoUnNombreDeClienteName(String name) {
-        BaseService.NAME_CLIENT.set(name);
+    @And("^tengo un nombre de proyecto (.*)$")
+    public void tengoUnNombreDeProyecto(String name) {
+        BaseService.NAME_PROJECT.set(name);
     }
 
     @And("^el nombre del proyecto es (.*)$")
     public void elNombreDelProyectoEs(String nameProject) {
-
         ProjectValidator.validateNameProject(nameProject);
     }
+
 
 }
